@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\ArtikelModel;
 
 class ArtikelController extends Controller
 {
     public function index(){
-    	$artikels = ItemModel::get_all();
-    	return view('artikel.index', compact('artikels'));
+    	$artikels = ArtikelModel::get_all();
+    	return view('artikel.data');
+    	// , compact('artikels')
     }
 
     public function create(){
@@ -18,7 +20,7 @@ class ArtikelController extends Controller
     public function store(Request $request){
     	// return view('item.form');
 
-    	$new_item = ItemModel::save($request->all());
+    	$new_item = ArtikelModel::save($request->all());
     	return redirect('/artikel');
     }
 }
